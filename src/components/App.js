@@ -8,6 +8,7 @@ import Article from '../components/Article';
 import Editor from '../components/Editor';
 import Home from '../components/Home';
 import Login from '../components/Login';
+import SearchResults from '../components/SearchResults';
 import Profile from '../components/Profile';
 import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
@@ -59,6 +60,7 @@ class App extends React.Component {
             <Route exact path="/" component={Home}/>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/search" component={SearchResults} />
             <Route path="/editor/:slug" component={Editor} />
             <Route path="/editor" component={Editor} />
             <Route path="/article/:id" component={Article} />

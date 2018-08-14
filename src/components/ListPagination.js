@@ -21,7 +21,11 @@ const ListPagination = props => {
   const setPage = page => {
     if(props.pager) {
       props.onSetPage(page, props.pager(page));
-    }else {
+    }
+    else if(props.searchQuery) {
+      props.onSetPage(page, agent.Search.search(props.searchQuery, page))
+    }
+    else {
       props.onSetPage(page, agent.Articles.all(page))
     }
   };

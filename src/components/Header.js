@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBox from './SearchBox';
 
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
       <ul className="nav navbar-nav pull-xs-right">
 
+        <li className="nav-item">
+          <SearchBox />
+        </li>
+        
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -35,6 +40,10 @@ const LoggedInView = props => {
     return (
       <ul className="nav navbar-nav pull-xs-right">
 
+        <li className="nav-item">
+          <SearchBox />
+        </li>
+        
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home

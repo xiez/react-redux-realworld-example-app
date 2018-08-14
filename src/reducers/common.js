@@ -6,6 +6,7 @@ import {
   SETTINGS_SAVED,
   LOGIN,
   REGISTER,
+  SEARCH,
   DELETE_ARTICLE,
   ARTICLE_PAGE_UNLOADED,
   EDITOR_PAGE_UNLOADED,
@@ -14,7 +15,8 @@ import {
   PROFILE_FAVORITES_PAGE_UNLOADED,
   SETTINGS_PAGE_UNLOADED,
   LOGIN_PAGE_UNLOADED,
-  REGISTER_PAGE_UNLOADED
+  REGISTER_PAGE_UNLOADED,
+  SEARCH_PAGE_UNLOADED
 } from '../constants/actionTypes';
 
 const defaultState = {
@@ -53,6 +55,11 @@ export default (state = defaultState, action) => {
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       };
+    case SEARCH:
+      return {
+        ...state,
+        redirectTo: action.error ? null : '/search?q=' + action.query
+      };
     case DELETE_ARTICLE:
       return { ...state, redirectTo: '/' };
     case ARTICLE_PAGE_UNLOADED:
@@ -63,6 +70,7 @@ export default (state = defaultState, action) => {
     case SETTINGS_PAGE_UNLOADED:
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:
+    case SEARCH_PAGE_UNLOADED:
       return { ...state, viewChangeCounter: state.viewChangeCounter + 1 };
     default:
       return state;
